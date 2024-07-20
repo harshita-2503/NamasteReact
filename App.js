@@ -307,6 +307,193 @@
 
 
 
+             //Episode 4
+
+/**
+ * 
+ * Header
+ * -Logo
+ * -Nav Items
+ * Body
+ * -Search
+ * -RestaurantContainer
+ *   -RestaurantCard
+ *        -Img
+ *        -Name of the res,Star rating, cuisine, delivery time etc
+ * Footer
+ * -Copyright
+ * -Links
+ * -Address
+ * -Contact
+ */
+
+
+
+
+
+
+
+
+
+
+
+import React from "react";
+import ReactDOM from "react-dom/client"
+
+const Header=()=>{
+    return(
+        <div className="header">
+            <div className="logo-container">
+                <img className="logo" src="https://static1.bigstockphoto.com/4/5/2/large2/254760460.jpg"/>
+            </div>
+            <div className="nav-items">
+                <ul>
+                    <li>Home</li>
+                    <li>About Us</li>
+                    <li>Contact Us</li>
+                    <li>Cart</li>
+
+                </ul>
+
+            </div>
+        </div>
+    )
+}
+
+
+// const styleCard={
+//     backgroundColor: "#f0f0f0",
+// }
+
+// const RestaurantCard=()=>{
+//     return (
+//         <div className="res-card" style={{backgroundColor: "#f0f0f0"}}>
+//             <img className="res-logo" alt="res-logo" src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,h_600/pafx0c2gjgvdjydx0nsx"/>
+//             <h3>Meghana Foods</h3>
+//             <h4>North Indian,Asian</h4>
+//             <h4>4.3 stars</h4>
+//             <h4>38 mins</h4>
+
+//         </div>
+//     )
+// }
+
+// const Body=()=>{
+//     return (
+//         <div className="body">
+//             <div className="search">
+//                 Search
+//             </div>
+//             <div className="res-container">
+//                <RestaurantCard/>
+//                <RestaurantCard/>
+//                <RestaurantCard/>
+//                <RestaurantCard/>
+//                <RestaurantCard/>
+//                <RestaurantCard/>
+//                <RestaurantCard/>
+//                <RestaurantCard/>
+//                <RestaurantCard/>
+//                <RestaurantCard/>
+
+//             </div>
+
+//         </div>
+//     )
+// }
+
+
+// const RestaurantCard=(props)=>{
+//     const {resName,cuisine}=props;
+//     return (
+//         <div className="res-card" style={{backgroundColor: "#f0f0f0"}}>
+//             <img className="res-logo" alt="res-logo" src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,h_600/pafx0c2gjgvdjydx0nsx"/>
+//             <h3>{resName}</h3>
+//             <h4>{cuisine}</h4>
+//             <h4>4.3 stars</h4>
+//             <h4>38 mins</h4>
+
+//         </div>
+//     )
+// }
+
+
+const RestaurantCard=(props)=>{
+    const {resData}=props;
+    return (
+        <div className="res-card" style={{backgroundColor: "#f0f0f0"}}>
+            <img className="res-logo" alt="res-logo" src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,h_600/pafx0c2gjgvdjydx0nsx"/>
+            <h3>{resData.data.name}</h3>
+            <h4>{resData.data.cuisines.join(", ")}</h4>
+            <h4>{resData.data.avgRating} stars</h4>
+            <h4>Rs{resData.data.costForTwo/100} for two</h4>
+            <h4>{resData.data.deliveryTime} minutes</h4>
+
+
+        </div>
+    )
+}
+
+//const Body=()=>{
+    //     return (
+    //         <div className="body">
+    //             <div className="search">
+    //                 Search
+    //             </div>
+    //             <div className="res-container">
+    //                <RestaurantCard resName="Meghana Foods" cuisine="Biryani,North Indian,Asian"/>
+    //                <RestaurantCard resName="KFC" cuisine="Burger,Fast Food"/>
+    
+    //             </div>
+    
+    //         </div>
+    //     )
+    // }
+
+
+const resObj={
+    type: "restaurant",
+    data: {
+        type: "F",
+        name: "KFC",
+        costForTwo: 40000,
+        cuisines: ["Burgers","Biryani","AmericanSnacks","FastFood"],
+        avgRating: 3.5,
+        deliveryTime: 36,
+    }
+}
+
+const Body=()=>{
+        return (
+            <div className="body">
+                <div className="search">
+                    Search
+                </div>
+                <div className="res-container">
+                   <RestaurantCard resData={resObj}/>
+    
+                </div>
+    
+            </div>
+        )
+    }
+
+const AppLayout=()=>{
+    return (
+      <div className="app">
+        <Header/>
+        <Body/>
+      </div>
+    )
+}
+
+
+const root=ReactDOM.createRoot(document.getElementById("root"));
+
+root.render(<AppLayout/>)
+
+
+
 
 
 
