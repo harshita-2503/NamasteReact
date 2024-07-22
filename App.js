@@ -339,26 +339,28 @@
 
 import React from "react";
 import ReactDOM from "react-dom/client"
+import {Header} from "./component/Header";
+import Body from "./component/Body";
 
-const Header=()=>{
-    return(
-        <div className="header">
-            <div className="logo-container">
-                <img className="logo" src="https://static1.bigstockphoto.com/4/5/2/large2/254760460.jpg"/>
-            </div>
-            <div className="nav-items">
-                <ul>
-                    <li>Home</li>
-                    <li>About Us</li>
-                    <li>Contact Us</li>
-                    <li>Cart</li>
+// const Header=()=>{
+//     return(
+//         <div className="header">
+//             <div className="logo-container">
+//                 <img className="logo" src="https://static1.bigstockphoto.com/4/5/2/large2/254760460.jpg"/>
+//             </div>
+//             <div className="nav-items">
+//                 <ul>
+//                     <li>Home</li>
+//                     <li>About Us</li>
+//                     <li>Contact Us</li>
+//                     <li>Cart</li>
 
-                </ul>
+//                 </ul>
 
-            </div>
-        </div>
-    )
-}
+//             </div>
+//         </div>
+//     )
+// }
 
 
 // const styleCard={
@@ -418,21 +420,39 @@ const Header=()=>{
 // }
 
 
-const RestaurantCard=(props)=>{
-    const {resData}=props;
-    return (
-        <div className="res-card" style={{backgroundColor: "#f0f0f0"}}>
-            <img className="res-logo" alt="res-logo" src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,h_600/pafx0c2gjgvdjydx0nsx"/>
-            <h3>{resData.data.name}</h3>
-            <h4>{resData.data.cuisines.join(", ")}</h4>
-            <h4>{resData.data.avgRating} stars</h4>
-            <h4>Rs{resData.data.costForTwo/100} for two</h4>
-            <h4>{resData.data.deliveryTime} minutes</h4>
+// const RestaurantCard=(props)=>{
+//     const {resData}=props;
+//     return (
+//         <div className="res-card" style={{backgroundColor: "#f0f0f0"}}>
+//             <img className="res-logo" alt="res-logo" src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,h_600/pafx0c2gjgvdjydx0nsx"/>
+//             <h3>{resData.data.name}</h3>
+//             <h4>{resData.data.cuisines.join(", ")}</h4>
+//             <h4>{resData.data.avgRating} stars</h4>
+//             <h4>Rs{resData.data.costForTwo/100} for two</h4>
+//             <h4>{resData.data.deliveryTime} minutes</h4>
 
 
-        </div>
-    )
-}
+//         </div>
+//     )
+// }
+
+// const RestaurantCard=(props)=>{
+//     const {resData}=props;
+//     const {name,cuisines,avgRating,costForTwo,deliveryTime}=resData?.data;
+//     return (
+//         <div className="res-card" style={{backgroundColor: "#f0f0f0"}}>
+//             <img className="res-logo" alt="res-logo" src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,h_600/pafx0c2gjgvdjydx0nsx"/>
+//             <h3>{name}</h3>
+//             <h4>{cuisines.join(", ")}</h4>
+//             <h4>{avgRating} stars</h4>
+//             <h4>Rs{costForTwo/100} for two</h4>
+//             <h4>{
+//             deliveryTime} minutes</h4>
+
+
+//         </div>
+//     )
+// }
 
 //const Body=()=>{
     //     return (
@@ -451,32 +471,110 @@ const RestaurantCard=(props)=>{
     // }
 
 
-const resObj={
-    type: "restaurant",
-    data: {
-        type: "F",
-        name: "KFC",
-        costForTwo: 40000,
-        cuisines: ["Burgers","Biryani","AmericanSnacks","FastFood"],
-        avgRating: 3.5,
-        deliveryTime: 36,
-    }
-}
+// const resObj={
+//     type: "restaurant",
+//     data: {
+//         type: "F",
+//         name: "KFC",
+//         costForTwo: 40000,
+//         cuisines: ["Burgers","Biryani","AmericanSnacks","FastFood"],
+//         avgRating: 3.5,
+//         deliveryTime: 36,
+//     }
+// }
 
-const Body=()=>{
-        return (
-            <div className="body">
-                <div className="search">
-                    Search
-                </div>
-                <div className="res-container">
-                   <RestaurantCard resData={resObj}/>
+// const Body=()=>{
+//         return (
+//             <div className="body">
+//                 <div className="search">
+//                     Search
+//                 </div>
+//                 <div className="res-container">
+//                    <RestaurantCard resData={resObj}/>
+//                    <RestaurantCard resData={resObj}/>
+//                    <RestaurantCard resData={resObj}/>
+//                    <RestaurantCard resData={resObj}/>
+//                    <RestaurantCard resData={resObj}/>
     
-                </div>
+//                 </div>
     
-            </div>
-        )
-    }
+//             </div>
+//         )
+//     }
+
+//     const reslist=[
+//     {
+//         type: "restaurant",
+//         data: {
+//             type: "F",
+//             name: "KFC",
+//             costForTwo: 40000,
+//             cuisines: ["Burgers","Biryani","AmericanSnacks","FastFood"],
+//             avgRating: 3.5,
+//             deliveryTime: 36,
+//             id: 89,
+//         }
+//     },
+//     {
+//         type: "restaurant",
+//         data: {
+//             type: "F",
+//             name: "Bhoji",
+//             costForTwo: 90000,
+//             cuisines: ["Burgers","Biryani","AmericanSnacks","FastFood"],
+//             avgRating: 3.5,
+//             deliveryTime: 36,
+//             id: 90,
+//         }
+//     },
+//     {
+//         type: "restaurant",
+//         data: {
+//             type: "F",
+//             name: "Folks",
+//             costForTwo: 560000,
+//             cuisines: ["Burgers","Biryani","AmericanSnacks","FastFood"],
+//             avgRating: 3.5,
+//             deliveryTime: 36,
+//             id: 91,
+//         }
+//     }
+// ]
+
+// const Body=()=>{
+//     return (
+//         <div className="body">
+//             <div className="search">
+//                 Search
+//             </div>
+//             <div className="res-container">
+//                <RestaurantCard resData={reslist[0]}/>
+//                <RestaurantCard resData={reslist[1]}/>
+//                <RestaurantCard resData={reslist[2]}/>
+
+//             </div>
+
+//         </div>
+//     )
+// }
+
+
+// const Body=()=>{
+//     return (
+//         <div className="body">
+//             <div className="search">
+//                 Search
+//             </div>
+//             <div className="res-container">
+//               {
+//               reslist.map(restaurant=><RestaurantCard key={restaurant.data.id} resData={restaurant}/>)
+//               }
+//             </div>
+
+//         </div>
+//     )
+// }
+    
 
 const AppLayout=()=>{
     return (
