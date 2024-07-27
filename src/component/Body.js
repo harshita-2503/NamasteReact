@@ -4,6 +4,8 @@ import RestaurantCard from "./RestaurantCard";
 import { useEffect, useState } from "react"
 import Shimmer from "./Shimmer";
 
+import Carousal from "./Carousal";
+
 const Body=()=>{
 
     //Local State variable-super powerful variable
@@ -13,6 +15,8 @@ const Body=()=>{
     const [filteredRestaurant,setFilteredRestaurant]=useState([])
 
     const [searchText,setSearchText]=useState("");
+
+    const [corousalList,setCorousalList]=useState([]);
 
 
     useEffect(()=>{
@@ -30,10 +34,13 @@ const Body=()=>{
         console.log(json);
         
         //optional chaining
-        setListOfRestaurants(json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle.restaurants);
-        console.log(json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle.restaurants)
+        setListOfRestaurants(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle.restaurants);
+        // console.log(json?.data?.cards);
 
-        setFilteredRestaurant(json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle.restaurants);
+        setFilteredRestaurant(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle.restaurants);
+
+        // setCorousalList(json?.data?.cards[0]?.card?.card?.gridElements?.infoWithStyle?.info);
+        setCorousalList(json?.data?.cards[0]?.card?.card?.gridElements?.infoWithStyle?.info);
     };
 
 
@@ -57,44 +64,44 @@ const Body=()=>{
 
 
     //Normal Js variable
-    let listOfRestaurantsJS=[ 
-        {
-        data: {
-            type: "F",
-            name: "KFC",
-            costForTwo: 40000,
-            cuisines: ["Burgers","Biryani","AmericanSnacks","FastFood"],
-            avgRating: 3.8,
-            deliveryTime: 36,
-            id: 89,
-        }
-        },
-        {
+//     let listOfRestaurantsJS=[ 
+//         {
+//         data: {
+//             type: "F",
+//             name: "KFC",
+//             costForTwo: 40000,
+//             cuisines: ["Burgers","Biryani","AmericanSnacks","FastFood"],
+//             avgRating: 3.8,
+//             deliveryTime: 36,
+//             id: 89,
+//         }
+//         },
+//         {
 
     
-    data: {
-        type: "F",
-        name: "Dominos",
-        costForTwo: 40000,
-        cuisines: ["Burgers","Biryani","AmericanSnacks","FastFood"],
-        avgRating: 4.5,
-        deliveryTime: 36,
-        id: 90,
-    }
-        },
-        {
-            data: {
-                type: "F",
-                name: "MCD",
-                costForTwo: 40000,
-                cuisines: ["Burgers","Biryani","AmericanSnacks","FastFood"],
-                avgRating: 4.1,
-                deliveryTime: 36,
-                id: 54,
-            }
-            },
+//     data: {
+//         type: "F",
+//         name: "Dominos",
+//         costForTwo: 40000,
+//         cuisines: ["Burgers","Biryani","AmericanSnacks","FastFood"],
+//         avgRating: 4.5,
+//         deliveryTime: 36,
+//         id: 90,
+//     }
+//         },
+//         {
+//             data: {
+//                 type: "F",
+//                 name: "MCD",
+//                 costForTwo: 40000,
+//                 cuisines: ["Burgers","Biryani","AmericanSnacks","FastFood"],
+//                 avgRating: 4.1,
+//                 deliveryTime: 36,
+//                 id: 54,
+//             }
+//             },
 
-];
+// ];
 
 
     
@@ -169,6 +176,17 @@ return  listOfRestaurants.length === 0? (<Shimmer/> ) : (
                 setListOfRestaurants(filteredList);
 
             }}>Top Rated Restaurants</button>
+        </div>
+        <div className="carousal-container">
+          
+
+            {  
+                corousalList.map(item=>
+                <Carousal key={item.id} corData={item}/>
+            )
+            }
+           
+
         </div>
         <div className="res-container">
           {/* {
