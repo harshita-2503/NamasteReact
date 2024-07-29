@@ -337,10 +337,11 @@
 
 
 
-import React from "react";
-import ReactDOM from "react-dom/client"
-import {Header} from "./component/Header";
-import Body from "./component/Body";
+// import React from "react";
+// import ReactDOM from "react-dom/client"
+// import {Header} from "./component/Header";
+// import Body from "./component/Body";
+
 
 // const Header=()=>{
 //     return(
@@ -574,22 +575,68 @@ import Body from "./component/Body";
 //         </div>
 //     )
 // }
-    
+ 
+
+
+import React from "react";
+import ReactDOM from "react-dom/client"
+import {Header} from "./component/Header";
+import Body from "./component/Body";
+import {createBrowserRouter, Outlet, RouterProvider} from "react-router-dom";
+import About from "./component/About";
+import Contact from "./component/Contact";
+import Error from "./component/Error";
+import Footer from "./component/Footer";
 
 const AppLayout=()=>{
   console.log(<Body/>)
     return (
       <div className="app">
-        <Header/>
+         <Header/>
+        {/* // if path=/ 
         <Body/>
+
+        // if path=/about 
+        <About/>
+
+        // if path=/contact 
+        <Contact/> */}
+        <Outlet/>
+        <Footer/>
+
       </div>
     )
 }
 
 
-const root=ReactDOM.createRoot(document.getElementById("root"));
+const appRouter=createBrowserRouter([
+  {
+    path : "/",
+    element: <AppLayout/>,
+    children:[
+      {
+        path: "/",
+        element: <Body/>
+      },
+      {
+        path: "/about",
+        element: <About/>
+      },
+    
+      {
+        path: "/contact",
+        element: <Contact/>
+      },
+    ],
+    errorElement: <Error/>
+  },
+ 
+])
 
-root.render(<AppLayout/>)
+
+const root=ReactDOM.createRoot(document.getElementById("root"));
+ 
+root.render(<RouterProvider router={appRouter}/>);
 
 
 

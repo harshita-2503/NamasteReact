@@ -5,6 +5,9 @@ import { useEffect, useState } from "react"
 import Shimmer from "./Shimmer";
 
 import Carousal from "./Carousal";
+import BestPlaces from "./BestPlaces"
+
+import BestCuisines from "./BestCuisine";
 
 const Body=()=>{
 
@@ -17,6 +20,10 @@ const Body=()=>{
     const [searchText,setSearchText]=useState("");
 
     const [corousalList,setCorousalList]=useState([]);
+
+    const [bestPlaces,setBestPlaces]=useState([]);
+
+    const [bestCuisines,setBestCuisines]=useState([]);
 
 
     useEffect(()=>{
@@ -31,7 +38,7 @@ const Body=()=>{
         const  data=await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=27.2101232&lng=77.97280889999999&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTIN");
 
         const json=await data.json();
-        console.log(json);
+        // console.log(json);
         
         //optional chaining
         setListOfRestaurants(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle.restaurants);
@@ -39,8 +46,15 @@ const Body=()=>{
 
         setFilteredRestaurant(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle.restaurants);
 
+       
+
         // setCorousalList(json?.data?.cards[0]?.card?.card?.gridElements?.infoWithStyle?.info);
         setCorousalList(json?.data?.cards[0]?.card?.card?.gridElements?.infoWithStyle?.info);
+
+        setBestPlaces(json?.data?.cards[6]?.card?.card?.brands);
+        console.log(json?.data?.cards[7]?.card?.card?.brands);
+
+        setBestCuisines(json?.data?.cards[7]?.card?.card?.brands);
     };
 
 
@@ -194,6 +208,24 @@ return  listOfRestaurants.length === 0? (<Shimmer/> ) : (
           } */}
             {
                 filteredRestaurant.map(restaurant=><RestaurantCard key={restaurant.info.id} resData={restaurant}/>)
+            }
+
+        </div>
+
+         <h1>Best Places to Eat Across Cities</h1>   
+        <div className="bestPlaces-container">
+         
+            {
+                bestPlaces.map(place=><BestPlaces resData={place}/>)
+            }
+
+        </div>
+
+        <h1>Best Cuisines Near me</h1>    
+        <div className="bestCuisines-container">
+         
+            {
+                bestCuisines.map(cuisine=><BestCuisines resData={cuisine}/>)
             }
 
         </div>
