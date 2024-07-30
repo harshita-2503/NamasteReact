@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import {useState,useEffect } from "react";
 import Shimmer from "./Shimmer";
 
@@ -68,3 +69,20 @@ export default RestaurantMenu
 
 
 
+=======
+const RestaurantMenu=()=>{
+    return (
+        <div className="menu">
+            <h1>Name of the Restaurant</h1>
+            <h2>Menu</h2>
+            <ul>
+                <li>Biryani</li>
+                <li>Burger</li>
+                <li>Diet Coke</li>
+            </ul>
+        </div>
+    )
+};
+
+export default RestaurantMenu
+>>>>>>> 3ad1d0b4a8b7e3aa0094454340f2aaaccf3e7153
