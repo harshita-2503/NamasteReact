@@ -587,6 +587,7 @@ import About from "./component/About";
 import Contact from "./component/Contact";
 import Error from "./component/Error";
 import Footer from "./component/Footer";
+import RestaurantMenu from "./component/RestaurantMenu";
 
 const AppLayout=()=>{
   console.log(<Body/>)
@@ -626,6 +627,11 @@ const appRouter=createBrowserRouter([
       {
         path: "/contact",
         element: <Contact/>
+      },
+
+      {
+        path: "/restaurant/:resId",
+        element: <RestaurantMenu/>
       },
     ],
     errorElement: <Error/>
