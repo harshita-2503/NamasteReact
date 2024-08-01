@@ -17,16 +17,29 @@ import UserClass from "./UserClass";
 
 
 class About extends React.Component{
-    constructor(){
+    constructor(props){
+        super(props);
+        console.log("Parent Constructor")
 
     }
 
+    componentDidMount(){
+        console.log("Parent Component did Mount")
+
+        //Api calls
+    }
+
     render(){
+        console.log("Parent Render")
         return (
                    <div>
                        <h1>About class Component</h1>
                         <h2>This is my Namaste React web series</h2>
-                       <UserClass name={"Harshita Mahajan (class)"} location={"Agra"}/>
+                       <UserClass name={"First"} location={"Agra"}/>
+                       <UserClass name={"Second"} location={"Dehradun"}/>
+                       <UserClass name={"Third"} location={"Pune"}/>
+
+
                    </div>
                  )
              
