@@ -1,8 +1,47 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+
+
+
 
 const User=({name})=>{
     const [count,setCount] =useState(0);
     const [count2] =useState(1);
+
+    // useEffect(()=>{
+    //     //Api Call
+
+    //     setInterval(()=>{
+    //         console.log("Namaste React op")
+    //     },1000);
+    //   },[])
+
+
+    //   useEffect(()=>{     //separate useEffect for count2 change
+    //     //Api Call
+    //   },[count2])
+
+
+
+    useEffect(()=>{
+        //Api Call
+
+        const timer=setInterval(()=>{
+         console.log("Namaste React op")
+         },1000);
+        console.log("useEffect")
+
+
+        return ()=>{
+            clearInterval(timer)
+            console.log("useEffect return"); 
+        }
+
+      },[])
+
+
+      console.log("render")
+
+
 
 
     return <div className="user-card">
