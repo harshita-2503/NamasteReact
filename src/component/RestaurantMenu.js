@@ -1,8 +1,8 @@
-<<<<<<< HEAD
 import {useState,useEffect } from "react";
 import Shimmer from "./Shimmer";
 
 import { useParams } from "react-router-dom";
+
 
 const RestaurantMenu=()=>{
 
@@ -30,11 +30,11 @@ const RestaurantMenu=()=>{
         const json=await data.json();
 
 
-        console.log(json?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card.itemCards);
+        console.log(json?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2].card.card.itemCards);
         // console.log(json?.data?.cards[4]?.groupedCard.cardGroupMap.REGULAR.cards);
         setResInfo(json?.data?.cards[2]?.card?.card?.info)
 
-        setItems(json?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card.itemCards);
+        setItems(json?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2].card.card.itemCards);
         
     }
 
@@ -55,6 +55,7 @@ const RestaurantMenu=()=>{
             </p>
             <h2>Menu</h2>
             <ul>
+                {console.log(items)}
                 {items.map((item)=>(
                     <li key={item.card.info.id}>{item.card.info.name} - Rs.{item.card.info.price/100 || item.card.info.defaultPrice/100}</li>))}
             </ul>
@@ -69,20 +70,3 @@ export default RestaurantMenu
 
 
 
-=======
-const RestaurantMenu=()=>{
-    return (
-        <div className="menu">
-            <h1>Name of the Restaurant</h1>
-            <h2>Menu</h2>
-            <ul>
-                <li>Biryani</li>
-                <li>Burger</li>
-                <li>Diet Coke</li>
-            </ul>
-        </div>
-    )
-};
-
-export default RestaurantMenu
->>>>>>> 3ad1d0b4a8b7e3aa0094454340f2aaaccf3e7153
