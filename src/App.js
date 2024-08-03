@@ -578,16 +578,28 @@
  
 
 
-import React from "react";
+import React, {lazy,Suspense} from "react";
 import ReactDOM from "react-dom/client"
 import {Header} from "./component/Header";
 import Body from "./component/Body";
 import {createBrowserRouter, Outlet, RouterProvider} from "react-router-dom";
-import About from "./component/About";
+//import About from "./component/About";
 import Contact from "./component/Contact";
 import Error from "./component/Error";
 import Footer from "./component/Footer";
 import RestaurantMenu from "./component/RestaurantMenu";
+//import Grocery from "./component/Grocery";
+
+
+//Chunking
+//Code splitting
+//Dynamic Bundling
+//lazy loading
+//on demand loading
+//dynamic import
+
+const Grocery=lazy(()=>import("./component/Grocery"));
+const About=lazy(()=>import("./component/About"))
 
 const AppLayout=()=>{
   console.log(<Body/>)
@@ -621,18 +633,24 @@ const appRouter=createBrowserRouter([
       },
       {
         path: "/about",
-        element: <About/>
+        element: <Suspense fallback={<h1>Loading About</h1>}><About/></Suspense>
       },
     
       {
         path: "/contact",
         element: <Contact/>
       },
+      {
+        path: "/grocery",
+        element:<Suspense fallback={<h1>Loading ...</h1>}> <Grocery/></Suspense>
+      },
 
       {
         path: "/restaurant/:resId",
         element: <RestaurantMenu/>
       },
+
+      
     ],
     errorElement: <Error/>
   },
