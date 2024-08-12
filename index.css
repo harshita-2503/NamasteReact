@@ -8,7 +8,7 @@ body{
     padding: 0;
 } */
 
-.header{
+/* .header{
     display :flex;
     justify-content: space-between;
     border: 1px solid black;
@@ -177,4 +177,10 @@ footer h3{
     padding: 10px;
     border: 1px solid black;
 
-}
+} */
+
+/* Beginning tailwindcss */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

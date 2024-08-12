@@ -173,14 +173,90 @@ const Body=()=>{
 
  
 
+// return  listOfRestaurants.length === 0? (<Shimmer/> ) : (
+//     <div className="body">
+//         <div className="filter">
+//             <div className="search">
+//                 <input type="text" className="search-box" value={searchText} onChange={(e)=>setSearchText(e.target.value)}/>
+//                 <button onClick={()=>{
+//                     //Filter the restaurant card and update the UI
+//                     //search text
+//                     console.log(searchText)
+//                     const filteredRestaurant=listOfRestaurants.filter((res)=>res.info.name.toLowerCase().includes(searchText.toLowerCase()));
+
+//                     setFilteredRestaurant(filteredRestaurant);
+//                 }}> Search</button>
+
+//             </div>
+//             <button className="filter-btn" onClick={()=>{
+//                 //Filter logic here
+//                 // listOfRestaurants=listOfRestaurants.filter(
+//                 //     (res)=>res.data.avgRating > 4
+//                 // );
+//                 // console.log(listOfRestaurants)
+
+//                 const filteredList=listOfRestaurants.filter(
+//                     (res)=>res.info.avgRating > 4.5
+//                 );
+
+//                 setListOfRestaurants(filteredList);
+
+//             }}>Top Rated Restaurants</button>
+//         </div>
+//         <div className="carousal-container">
+          
+
+//             {  
+//                 corousalList.map(item=>
+//                 <Carousal key={item.id} corData={item}/>
+//             )
+//             }
+           
+
+//         </div>
+//         <div className="res-container">
+//           {/* {
+//           reslist.map(restaurant=><RestaurantCard key={restaurant.data.id} resData={restaurant}/>)
+//           } */}
+//             {
+//                 filteredRestaurant.map((restaurant)=>(
+
+//                 <Link key={restaurant.info.id} to={"/restaurant/"+restaurant.info.id}><RestaurantCard key={restaurant.info.id} resData={restaurant}/></Link>))
+//             }
+
+//         </div>
+
+//          <h1>Best Places to Eat Across Cities</h1>   
+//         <div className="bestPlaces-container">
+         
+//             {
+//                 bestPlaces.map(place=><BestPlaces resData={place}/>)
+//             }
+
+//         </div>
+
+//         <h1>Best Cuisines Near me</h1>    
+//         <div className="bestCuisines-container">
+         
+//             {
+//                 bestCuisines.map(cuisine=><BestCuisines resData={cuisine}/>)
+//             }
+
+//         </div>
+
+//     </div>
+// )
+// }
+
+// export default Body;
+
 return  listOfRestaurants.length === 0? (<Shimmer/> ) : (
     <div className="body">
-        <div className="filter">
-            <div className="search">
-                <input type="text" className="search-box" value={searchText} onChange={(e)=>setSearchText(e.target.value)}/>
-                <button onClick={()=>{
-                    //Filter the restaurant card and update the UI
-                    //search text
+        <div className="filter flex items-center">
+            <div className="search m-4 p-4">
+                <input type="text" className="border border-solid border-black" value={searchText} onChange={(e)=>setSearchText(e.target.value)}/>
+                <button className="px-4 py-2 bg-green-100 m-4 rounded-lg" onClick={()=>{
+                   
                     console.log(searchText)
                     const filteredRestaurant=listOfRestaurants.filter((res)=>res.info.name.toLowerCase().includes(searchText.toLowerCase()));
 
@@ -188,22 +264,22 @@ return  listOfRestaurants.length === 0? (<Shimmer/> ) : (
                 }}> Search</button>
 
             </div>
-            <button className="filter-btn" onClick={()=>{
-                //Filter logic here
-                // listOfRestaurants=listOfRestaurants.filter(
-                //     (res)=>res.data.avgRating > 4
-                // );
-                // console.log(listOfRestaurants)
 
-                const filteredList=listOfRestaurants.filter(
-                    (res)=>res.info.avgRating > 4.5
-                );
+            <div className="m-4 p-4 flex items-center">
+            <button className="px-4 py-2 bg-gray-100 rounded-lg" onClick={()=>{
+              
 
-                setListOfRestaurants(filteredList);
+              const filteredList=listOfRestaurants.filter(
+                  (res)=>res.info.avgRating > 4.5
+              );
 
-            }}>Top Rated Restaurants</button>
+              setListOfRestaurants(filteredList);
+
+          }}>Top Rated Restaurants</button>
+            </div>
+            
         </div>
-        <div className="carousal-container">
+        <div className="carousal-container flex">
           
 
             {  
@@ -214,10 +290,8 @@ return  listOfRestaurants.length === 0? (<Shimmer/> ) : (
            
 
         </div>
-        <div className="res-container">
-          {/* {
-          reslist.map(restaurant=><RestaurantCard key={restaurant.data.id} resData={restaurant}/>)
-          } */}
+        <div className="flex flex-wrap">
+        
             {
                 filteredRestaurant.map((restaurant)=>(
 
