@@ -1,4 +1,4 @@
-import RestaurantCard from "./RestaurantCard";
+import RestaurantCard,{withPromotedLabel} from "./RestaurantCard";
 // import reslist from "../utils/mockData";
 
 import { useEffect, useState } from "react"
@@ -30,6 +30,8 @@ const Body=()=>{
 
     const [bestCuisines,setBestCuisines]=useState([]);
 
+    const RestaurantCardPromoted= withPromotedLabel(RestaurantCard);
+
 
     useEffect(()=>{
         fetchData();
@@ -57,7 +59,7 @@ const Body=()=>{
         setCorousalList(json?.data?.cards[0]?.card?.card?.gridElements?.infoWithStyle?.info);
 
         setBestPlaces(json?.data?.cards[6]?.card?.card?.brands);
-        console.log(json?.data?.cards[7]?.card?.card?.brands);
+        // console.log(json?.data?.cards[7]?.card?.card?.brands);
 
         setBestCuisines(json?.data?.cards[7]?.card?.card?.brands);
     };
@@ -80,7 +82,7 @@ const Body=()=>{
 
     
 
-    console.log("body rendered")
+    console.log("body rendered",listOfRestaurants)
 
     // const arr=useState(reslist);
     // const [listOfRestaurants,setListOfRestaurants]=arr;
@@ -295,7 +297,11 @@ return  listOfRestaurants.length === 0? (<Shimmer/> ) : (
             {
                 filteredRestaurant.map((restaurant)=>(
 
-                <Link key={restaurant.info.id} to={"/restaurant/"+restaurant.info.id}><RestaurantCard key={restaurant.info.id} resData={restaurant}/></Link>))
+                <Link key={restaurant.info.id} to={"/restaurant/"+restaurant.info.id}>
+                    {/* if the restauarnt is prmoted then add a promoted label to it */}
+
+                    <RestaurantCardPromoted key={restaurant.info.id} resData={restaurant}/>
+                    <RestaurantCard key={restaurant.info.id} resData={restaurant}/></Link>))
             }
 
         </div>
