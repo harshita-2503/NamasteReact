@@ -118,24 +118,22 @@ const RestaurantMenu=()=>{
     const {resId}=useParams();
   
 
-    const {resInfo,json}=useRestaurantMenu(resId);
+    const {resInfo,categories}=useRestaurantMenu(resId);
 
 
-    const categories=json?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(c=> c.card?.card?.["@type"]==="type.googleapis.com/swiggy.presentation.food.v2.NestedItemCategory" || c.card?.card?.["@type"]==="type.googleapis.com/swiggy.presentation.food.v2.ItemCategory");
 
 
      
 
     return (resInfo===null)?<Shimmer/>:(
-        <div className="menu">
-            <h1>{resInfo.name}</h1>
-            <p>{resInfo.cuisines.join(",")}-{resInfo.costForTwoMessage}
+        <div className="text-center">
+            <h1 className="font-bold my-6 text-2xl">{resInfo.name}</h1>
+            <p className="font-bold text-lg">{resInfo.cuisines.join(",")}-{resInfo.costForTwoMessage}
             </p>
-            <h2>Menu</h2>
 
-                {console.log("category")}
-                {categories.map(()=>(
-                    <ResCategory/>
+                {/* {console.log(categories)} */}
+                {categories.map((category)=>(
+                    <ResCategory key={category?.card?.card?.title} data={category?.card?.card}/>
                    ))}
         </div>
     )
