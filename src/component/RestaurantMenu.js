@@ -120,6 +120,9 @@ const RestaurantMenu=()=>{
 
     const {resInfo,categories}=useRestaurantMenu(resId);
 
+    // const [showIndex,setShowIndex]=useState(0);
+    const [showIndex,setShowIndex]=useState(null);
+
 
 
 
@@ -132,8 +135,12 @@ const RestaurantMenu=()=>{
             </p>
 
                 {/* {console.log(categories)} */}
-                {categories.map((category)=>(
-                    <ResCategory key={category?.card?.card?.title} data={category?.card?.card}/>
+                {categories.map((category,index)=>(
+                    // <ResCategory key={category?.card?.card?.title} data={category?.card?.card} showItems={false}/>  //to not show list
+                    // <ResCategory key={category?.card?.card?.title} data={category?.card?.card} showItems={index===1?true:false}/>   //to show 2nd list
+                    <ResCategory key={category?.card?.card?.title} data={category?.card?.card} showItems={index===showIndex?true:false}
+                    setShowIndex={()=>setShowIndex(index)}
+                    /> 
                    ))}
         </div>
     )
