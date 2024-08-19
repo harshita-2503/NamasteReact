@@ -578,7 +578,7 @@
  
 
 
-import React, {lazy,Suspense} from "react";
+import React, {lazy,Suspense, useState,useEffect} from "react";
 import ReactDOM from "react-dom/client"
 import {Header} from "./component/Header";
 import Body from "./component/Body";
@@ -588,36 +588,58 @@ import Contact from "./component/Contact";
 import Error from "./component/Error";
 import Footer from "./component/Footer";
 import RestaurantMenu from "./component/RestaurantMenu";
-//import Grocery from "./component/Grocery";
 
-
-//Chunking
-//Code splitting
-//Dynamic Bundling
-//lazy loading
-//on demand loading
-//dynamic import
+import UserContext from "./utils/UserContext";
 
 const Grocery=lazy(()=>import("./component/Grocery"));
 const About=lazy(()=>import("./component/About"))
 
 const AppLayout=()=>{
+
+  const [userName,setUserName]=useState()
+
+  //authentication 
+  useEffect(()=>{
+
+    //Make an api call and send username and password
+
+    const data={
+      name : "Harshita Mahajan"
+    }
+    setUserName(data.name)
+    
+  },[])
+
   console.log(<Body/>)
     return (
+
+      //Default User
+      // <UserContext.Provider value={{loggedInUser : userName}}>
+      //   {/* harshita Mahajan */}
+      // <div className="app">
+      // <UserContext.Provider value={{loggedInUser : "Elon Musk"}}>
+      //   {/* Elon Musk */}
+      //    <Header/>
+      //    </UserContext.Provider>
+       
+      //   <Outlet/>
+      //   <Footer/>
+
+      // </div>
+      // </UserContext.Provider>
+
+
+
+      <UserContext.Provider value={{loggedInUser : userName ,setUserName}}>
+        {/* harshita Mahajan */}
       <div className="app">
          <Header/>
-        {/* // if path=/ 
-        <Body/>
-
-        // if path=/about 
-        <About/>
-
-        // if path=/contact 
-        <Contact/> */}
+       
         <Outlet/>
         <Footer/>
 
       </div>
+      </UserContext.Provider>
     )
 }
 
