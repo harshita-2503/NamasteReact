@@ -71,6 +71,7 @@ import { useState,useEffect ,useContext } from "react"
 import { Link } from "react-router-dom"
 import useOnlineStatus from "../utils/useOnlineStatus"
 import UserContext from "../utils/UserContext"
+import { useSelector } from "react-redux"
 
 
 export const Header=()=>{
@@ -79,7 +80,12 @@ export const Header=()=>{
     // console.log(data)
 
     const {loggedInUser}=useContext(UserContext);
-    console.log(loggedInUser)
+    // console.log(loggedInUser)
+
+    //Subscribing a store using a Selector
+
+    const cartItems=useSelector((store)=>store.cart.items)
+    console.log(cartItems)
 
     const [btnNameReact,setBtnNameReact]=useState("Login")
     console.log("Header render");
@@ -106,7 +112,7 @@ export const Header=()=>{
                     <li className="px-4"><Link to="/contact">Contact Us</Link></li>
                     <li className="px-4"><Link to="/grocery">Grocery</Link></li>
 
-                    <li className="px-4">Cart</li>
+                    <li className="px-4 font-bold text-xl">Cart({cartItems.length})</li>
                      <button className="login" onClick={()=>{
                        btnNameReact === "Login"?setBtnNameReact("Logout") : setBtnNameReact("Login");
                         console.log(btnNameReact)

@@ -591,6 +591,9 @@ import RestaurantMenu from "./component/RestaurantMenu";
 
 import UserContext from "./utils/UserContext";
 
+import {Provider} from 'react-redux'
+import appStore from "./utils/appStore";
+
 const Grocery=lazy(()=>import("./component/Grocery"));
 const About=lazy(()=>import("./component/About"))
 
@@ -629,7 +632,7 @@ const AppLayout=()=>{
       // </UserContext.Provider>
 
 
-
+      <Provider store={appStore}>
       <UserContext.Provider value={{loggedInUser : userName ,setUserName}}>
         {/* harshita Mahajan */}
       <div className="app">
@@ -640,6 +643,7 @@ const AppLayout=()=>{
 
       </div>
       </UserContext.Provider>
+      </Provider>
     )
 }
 
