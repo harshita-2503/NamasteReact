@@ -11,6 +11,12 @@ const cartSlice=createSlice({
     reducers :{
         addItems: (state,action)=>{
 
+            //Vanilla(older version)Reduc =>don't mutate state
+
+            //const newState=[...state];
+            // newState.items.push(action.payload);
+            // return newState
+
             //mutating the state here
             state.items.push(action.payload);
 
