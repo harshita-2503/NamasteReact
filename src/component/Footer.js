@@ -1,7 +1,7 @@
 const Footer=()=>{
     return (
-        <div className="bg-black text-gray-400">
-            <footer className="flex justify-center p-4 gap-5">
+        // <div className="bg-black text-gray-400">
+            <footer className="bg-black text-gray-400 flex justify-center p-4 gap-5">
                 <div>
                     <h1>Swiggy</h1>
                     <h3>© 2024 Bundl Technologies Pvt. Ltd</h3>
@@ -44,7 +44,7 @@ const Footer=()=>{
 
             </footer>
        
-        </div>
+        // </div>
     )
 }
 export default Footer

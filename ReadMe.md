@@ -41,6 +41,27 @@
  -Selector
 
 
+ # Types of testing(developer)
+
+-Unit testing
+-Integration testing
+-End to End Testing-e2e testing
+
+# Setting up testing in our app
+
+-Install React testing Library
+-Install Jest
+-Install Babel Dependencies
+-Configure Babel
+-Configure parcel config gile(.parcelrc) to disbale default Babel transpilation
+-Jest Config-npx jest --init
+-Install Js-Dom 
+-Install @babel/preset-react to make jsx work in test cases
+-Include @babel/preset-react inside my babel config
+-Install @testing-library/jest-dom
+
+ 
+
 
 
 
