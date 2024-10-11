@@ -85,10 +85,10 @@ export const Header=()=>{
     //Subscribing a store using a Selector
 
     const cartItems=useSelector((store)=>store.cart.items)
-    console.log(cartItems)
+    //console.log(cartItems)
 
     const [btnNameReact,setBtnNameReact]=useState("Login")
-    console.log("Header render");
+    //console.log("Header render");
 
 
     
@@ -115,7 +115,7 @@ export const Header=()=>{
                     <li className="px-4 font-bold text-xl"><Link to="/cart">Cart({cartItems.length})</Link></li>
                      <button className="login" onClick={()=>{
                        btnNameReact === "Login"?setBtnNameReact("Logout") : setBtnNameReact("Login");
-                        console.log(btnNameReact)
+                       // console.log(btnNameReact)
                     }}>{btnNameReact}</button>
 
                     <li className="p-4 font-bold">{loggedInUser}</li>

@@ -3,8 +3,8 @@ const BestCuisines=(props)=>{
     let {text,link}=resData;
 
     return(
-        <div className="cuisineContainer">
-            <button><a href={link}>{text}</a></button>
+        <div className="flex">
+            <button className="p-4 m-4 bg-black text-white w-80 rounded-lg"><a href={link}>{text}</a></button>
 
         </div>
     )

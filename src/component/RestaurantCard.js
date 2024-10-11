@@ -6,6 +6,8 @@ import UserContext from "../utils/UserContext";
 
 const RestaurantCard=(props)=>{
     const {resData}=props;
+    console.log(resData)
+    
     const {cloudinaryImageId,name,cuisines,avgRating,costForTwo,sla}=resData?.info;
     // console.log(sla.deliveryTime);
 

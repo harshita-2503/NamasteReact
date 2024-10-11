@@ -319,8 +319,8 @@ return  listOfRestaurants.length === 0? (<Shimmer/> ) : (
 
         </div>
 
-         <h1>Best Places to Eat Across Cities</h1>   
-        <div className="bestPlaces-container">
+         <h1 className="font-bold text-2xl underline" >Best Places to Eat Across Cities</h1>   
+        <div className="flex flex-wrap bestPlaces-container">
          
             {
                 bestPlaces.map(place=><BestPlaces resData={place}/>)
@@ -328,8 +328,8 @@ return  listOfRestaurants.length === 0? (<Shimmer/> ) : (
 
         </div>
 
-        <h1>Best Cuisines Near me</h1>    
-        <div className="bestCuisines-container">
+        <h1 className="font-bold text-2xl underline">Best Cuisines Near me</h1>    
+        <div className="flex flex-wrap">
          
             {
                 bestCuisines.map(cuisine=><BestCuisines resData={cuisine}/>)
