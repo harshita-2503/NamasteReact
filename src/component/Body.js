@@ -84,7 +84,7 @@ const Body=()=>{
 
     
 
-    console.log("body rendered",listOfRestaurants)
+    // console.log("body rendered",listOfRestaurants)
 
     // const arr=useState(reslist);
     // const [listOfRestaurants,setListOfRestaurants]=arr;
@@ -136,11 +136,11 @@ const Body=()=>{
 
     
     //Conditional rendering
-//     if(listOfRestaurants.length === 0){
-//         // return <h1>Loading...</h1>
+    // if(listOfRestaurants.length === 0){
+    //     // return <h1>Loading...</h1>
 
-//         return <Shimmer/>
-//     }
+    //     return <Shimmer/>
+    // }
 
    
 //     return (
@@ -256,12 +256,13 @@ const Body=()=>{
 
 
 const {loggedInUser,setUserName}=useContext(UserContext)
+console.log("listOfRestaurants",listOfRestaurants)
 
 return  listOfRestaurants.length === 0? (<Shimmer/> ) : (
     <div className="body">
         <div className="filter flex items-center">
             <div className="search m-4 p-4">
-                <input type="text" className="border border-solid border-black" value={searchText} onChange={(e)=>setSearchText(e.target.value)}/>
+                <input type="text" data-testid="searchInput" className="border border-solid border-black" value={searchText} onChange={(e)=>setSearchText(e.target.value)}/>
                 <button className="px-4 py-2 bg-green-100 m-4 rounded-lg" onClick={()=>{
                    
                     console.log(searchText)
@@ -272,9 +273,9 @@ return  listOfRestaurants.length === 0? (<Shimmer/> ) : (
 
             </div>
 
-            <div className="m-4 p-4 flex items-center">
+            <div className="m-4 p-4 flex items-center" onClick={console.log("div clicked")}>
             <button className="px-4 py-2 bg-gray-100 rounded-lg" onClick={()=>{
-              
+              console.log("top rated clicked")
 
               const filteredList=listOfRestaurants.filter(
                   (res)=>res.info.avgRating > 4.5
@@ -283,6 +284,7 @@ return  listOfRestaurants.length === 0? (<Shimmer/> ) : (
               setListOfRestaurants(filteredList);
 
           }}>Top Rated Restaurants</button>
+          {console.log("dispaly top rated res button")}
             </div>
 
             <div className="m-4 p-4 flex items-center">
@@ -313,7 +315,7 @@ return  listOfRestaurants.length === 0? (<Shimmer/> ) : (
                 <Link key={restaurant.info.id} to={"/restaurant/"+restaurant.info.id}>
                     {/* if the restauarnt is prmoted then add a promoted label to it */}
 
-                    <RestaurantCardPromoted key={restaurant.info.id} resData={restaurant}/>
+                    <RestaurantCardPromoted key={restaurant.info.id*10} resData={restaurant}/>
                     <RestaurantCard key={restaurant.info.id} resData={restaurant}/></Link>))
             }
 
